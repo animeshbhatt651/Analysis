@@ -1,0 +1,43 @@
+<div class="btn-groups">
+    <div class="btn-red-tr" onclick="openFullScreenImage('image1.jpg')">InstaAstro</div>
+    <div class="btn-green-tr" onclick="openFullScreenImage('image2.jpg')">AstroTalk</div>
+    <div class="btn-blue-tr" onclick="openFullScreenImage('image3.jpg')">ASTROYOGI</div>
+</div>
+
+<script>
+    function openFullScreenImage(imageSource) {
+        // Create a full-screen container for the image
+        const fullScreenContainer = document.createElement('div');
+        fullScreenContainer.style.position = 'fixed';
+        fullScreenContainer.style.top = '0';
+        fullScreenContainer.style.left = '0';
+        fullScreenContainer.style.width = '100%';
+        fullScreenContainer.style.height = '100%';
+        fullScreenContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+        fullScreenContainer.style.zIndex = '9999';
+
+        // Create the image element
+        const imageElement = document.createElement('img');
+        imageElement.src = imageSource;
+        imageElement.style.maxWidth = '100%';
+        imageElement.style.maxHeight = '100%';
+        imageElement.style.display = 'block';
+        imageElement.style.margin = 'auto';
+        imageElement.style.position = 'absolute';
+        imageElement.style.top = '0';
+        imageElement.style.bottom = '0';
+        imageElement.style.left = '0';
+        imageElement.style.right = '0';
+
+        // Append the image to the full-screen container
+        fullScreenContainer.appendChild(imageElement);
+
+        // Append the full-screen container to the body
+        document.body.appendChild(fullScreenContainer);
+
+        // Function to close the full-screen image on click
+        fullScreenContainer.onclick = function() {
+            document.body.removeChild(fullScreenContainer);
+        };
+    }
+</script>
